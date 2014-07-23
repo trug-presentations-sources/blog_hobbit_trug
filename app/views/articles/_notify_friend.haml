@@ -1,0 +1,13 @@
+%form#notify_friend_form{ 'accept-charset' => 'UTF-8', action: "/articles/#{article.id}/notify_friend", method: 'post', style: 'display: none;' }
+  .field
+    %label{ for: 'name' } Your name
+    %br
+    %input#name{ name: 'name', type: 'text' }
+  .field
+    %label{ for: 'email' } Your friend's email
+    %br
+    %input#email{ name: 'email', type: 'text' }
+  .actions
+    %input{ name: 'commit', type: 'submit', value: 'Send' }
+    or
+    %a{ href: '#', onclick: "$('#notify_friend_form').slideUp()" } Cancel

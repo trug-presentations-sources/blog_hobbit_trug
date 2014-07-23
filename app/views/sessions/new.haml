@@ -1,0 +1,12 @@
+%h1 Login
+%form{ 'accept-charset' => 'UTF-8', action: '/session', method: 'post' }
+  .field
+    %label{ for: 'email' } Email
+    %br
+    %input#email{ name: 'email', type: 'text' }
+  .field
+    %label{for: 'password' } Password
+    %br/
+    %input#password{ name: 'password', type: 'password' }
+  .actions
+    %input{ name: 'commit', type: 'submit', value: 'Login' }

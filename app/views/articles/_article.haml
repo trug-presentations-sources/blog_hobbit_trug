@@ -1,0 +1,15 @@
+.article{ id: "article_#{article.id}"}
+  %h3
+    %a{ href: "/articles/#{article.id}" }= article.title
+    - if article.owned_by?(current_user)
+      %span.actions
+        %a{ href: "/articles/#{article.id}/edit" } Edit
+        %a{ href: "/articles/#{article.id}/delete", 'data-method' => 'post', 'data-confirm' => 'Are you sure?' } Delete
+  = article.body
+  .article_meta
+    %p
+      Author: 
+      = article.user.email
+    %p
+      Created At:
+      = article.created_at

@@ -1,0 +1,30 @@
+%form#new_user.new_user{ 'accept-charset' => 'UTF-8', action: @user.id ? "/users/#{@user.id}" : '/users', method: 'post' }
+  - if @user.errors.any?
+    #error_explanation
+      %h2
+        = @user.errors.count
+        error(s) prohibited this user from being saved:
+      %ul
+        - @user.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    %label{ for: 'user_email' } Email
+    %br
+    %input#user_email{ name: 'user[email]', type: 'text', value: @user.email }
+  .field
+    %label{ for: 'user_name' } Name
+    %br
+    %input#user_name{ name: 'user[name]', type: 'text' }
+  .field
+    %label{ for: 'user_password' } Password
+    %br
+    %input#user_password{ name: 'user[password]', type: 'password' }
+  .field
+    %label{ for: 'user_password_confirmation' } Password confirmation
+    %br
+    %input#user_password_confirmation{ name: 'user[password_confirmation]', type: 'password'}
+  .actions
+    %input{ name: 'commit', type: 'submit', value: @user.id ? 'Update User' : 'Create User' }
+    or
+    %a.cancel{ href: 'javascript:history.go(-1);' } Cancel

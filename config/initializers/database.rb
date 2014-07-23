@@ -1,0 +1,1 @@
+DB = Sequel.sqlite('db/blog.sqlite3')

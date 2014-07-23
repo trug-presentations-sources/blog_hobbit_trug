@@ -1,0 +1,32 @@
+!!!
+%html
+  %head
+    %title Blog
+    %link{ href: '/assets/application.css', media: 'all', rel: 'stylesheet' }
+    %script{ src: '/assets/application.js' }
+  %body
+    #header
+      %h1
+        %a{ href: '/' } Blog
+      #user_bar
+        - if current_user
+          %a{ href: '/articles/new' } New Article
+          |
+          %a{ href: "/users/#{current_user.id}/edit" } Edit Account
+          |
+          %a{ href: '/logout' } Logout
+        - else
+          %a{ href: '/login' } Login
+          |
+          %a{ href: '/users/new' } Sign-up
+    #main
+      - if env['x-rack.flash'][:notice]
+        %p.notice= env['x-rack.flash'][:notice]
+
+      - if env['x-rack.flash'][:alert]
+        %p.alert= env['x-rack.flash'][:alert]
+
+      = yield
+    #footer
+      A simple blog built for the book
+      %a{href: "http://beginningrails.com"} Beginning Rails 4

@@ -1,0 +1,31 @@
+%form#new_user.new_user{ 'accept-charset' => 'UTF-8', action: @article.id ? "/articles/#{@article.id}" : '/articles', method: 'post' }
+  - if @article.errors.any?
+    #error_explanation
+      %h2
+        = @article.errors.count
+        error(s) prohibited this user from being saved:
+      %ul
+        - @article.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    %label{ for: 'article_title' } Title
+    %br
+    %input#article_title{ name: 'article[title]', type: 'text', value: @article.title }
+  .field
+    %label{ for: 'article_location' } Location
+    %br
+    %input#article_location{ name: 'article[location]', type: 'text', value: @article.location }
+  .field
+    %label{ for: 'article_excerpt' } Excerpt
+    %br
+    %input#article_excerpt{ name: 'article[excerpt]', type: 'text', value: @article.excerpt }
+  .field
+    %label{ for: 'article_body' } Body
+    %br
+    %textarea#article_body{ name: 'article[body]' }
+      = @article.body
+  .actions
+    %input{ name: 'commit', type: 'submit', value: @article.id ? 'Update Article' : 'Create Article' }
+    or
+    %a.cancel{ href: 'javascript:history.go(-1);' } Cancel

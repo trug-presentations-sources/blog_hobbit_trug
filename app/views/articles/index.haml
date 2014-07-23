@@ -1,0 +1,4 @@
+%h1 Listing articles
+#articles
+  - @articles.each do |article|
+    = partial 'article', article: article
